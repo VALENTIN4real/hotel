@@ -22,7 +22,7 @@ class EtablissementController extends AbstractController
     }
 
     #[Route('/etablissement/{id}', name: 'app_etablissement')]
-    public function getEtablissement(ManagerRegistry $doctrine, int $id): Response
+    public function getEtablissementById(ManagerRegistry $doctrine, int $id): Response
     {
         $repository = $doctrine->getRepository(Etablissement::class);
         $etablissement = $repository->find($id);

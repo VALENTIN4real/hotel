@@ -9,11 +9,9 @@
 </style>
 
 <div class="example-wrapper">
-    <ul>
-        {% for suite in suites %}
-            <li><a href="{{ path('app_suite', {id: suite.id}) }}">{{ suite.titre }}</a></li>
-        {% endfor %}
-    </ul>
-
+    <h1>{{ suite.titre }}</h1>
+    <p>{{ suite.description }}</p>
+    <p>{{ suite.prix }}</p>
+    <img src="{{ asset('uploads/suite/images/' ~ suite.image) }}" alt="suite">
 </div>
 {% endblock %}

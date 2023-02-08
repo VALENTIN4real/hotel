@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Admin;
 use App\Entity\Etablissement;
 use App\Entity\Suite;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
@@ -44,6 +45,7 @@ class BackOfficeController extends AbstractDashboardController
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::linkToCrud('Liste des établissements', 'fas fa-list', Etablissement::class);
         yield MenuItem::linkToCrud('Liste des suites', 'fas fa-list', Suite::class);
+        yield MenuItem::linkToCrud('Liste des admins', 'fas fa-list', Admin::class);
 
     }
 }
