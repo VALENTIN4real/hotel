@@ -3,17 +3,26 @@
 {% block title %}Hello SuiteController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <ul>
+<div class="container">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
         {% for suite in suites %}
-            <li><a href="{{ path('app_suite', {id: suite.id}) }}">{{ suite.titre }}</a></li>
+        <div class="col">
+            <div class="card h-100">
+                <img src="{{ asset('uploads/suite/images/' ~ suite.image) }}" class="img-fluid rounded-start" alt="Image suite">
+                <div class="card-body">
+                    <h5 class="card-title">{{ suite.titre }}</h5>
+                    <p class="card-text">{{ suite.description }}</p>
+                    <p>{{ suite.prix | format_currency('EUR') }}</p>
+                </div>
+                <div class="card-footer">
+                    <a class="d-flex justify-content-end" href="{{ path('app_suite', {id: suite.id}) }}">En savoir plus</a>
+                </div>
+            </div>
+        </div>
         {% endfor %}
-    </ul>
+    </div>
+
 
 </div>
 {% endblock %}

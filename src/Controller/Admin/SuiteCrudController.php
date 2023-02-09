@@ -33,7 +33,7 @@ class SuiteCrudController extends AbstractCrudController
             TextField::new('titre'),
             ImageField::new('image')->setBasePath('public/uploads/suite/images/')->setUploadDir('public/uploads/suite/images'),
             TextareaField::new('description'),
-            MoneyField::new('prix')->setCurrency('EUR'),
+            MoneyField::new('prix')->setCurrency('EUR')->setCustomOption('storedAsCents', false),
             Field::new('id_etablissement')
                 ->setFormType(EntityType::class)
                 ->setFormTypeOptions([

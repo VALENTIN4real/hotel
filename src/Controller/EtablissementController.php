@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Etablissement;
+use App\Entity\Suite;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -26,9 +27,12 @@ class EtablissementController extends AbstractController
     {
         $repository = $doctrine->getRepository(Etablissement::class);
         $etablissement = $repository->find($id);
+        $repositorySuites = $doctrine->getRepository(Suite::class);
+        $suites = $repositorySuites->findBy(['etablissement' => $id]);
         return $this->render('etablissement/etablissement.html.twig', [
             'controller_name' => 'EtablissementController',
-            'etablissement' => $etablissement
+            'etablissement' => $etablissement,
+            'suites' => $suites
         ]);
     }
 }
