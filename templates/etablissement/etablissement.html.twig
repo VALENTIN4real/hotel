@@ -1,22 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello EtablissementController!{% endblock %}
+{% block title %}{{ etablissement.nom }}{% endblock %}
 
 {% block body %}
     <div class="container">
         <div class="row justify-content-center mt-3">
-            <div class="col-10" style="height: 700px">
-                <div class="card mb-3 _custom-card">
+            <div class="col-md-8">
+                <div class="card mb-3 custom-opacity border-0">
                     <div class="row g-0">
-                        <div class="col-md-4">
-                            <img src="{{ asset('uploads/etablissement/images/' ~ etablissement.image) }}" class="img-fluid rounded-start card-img">
+                        <div class="col-md-4 d-flex align-items-center">
+                            <img src="{{ asset('uploads/etablissement/images/' ~ etablissement.image) }}" class="img-fluid rounded-start">
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
                                 <h5 class="card-title">{{ etablissement.nom }}</h5>
                                 <p class="card-text">{{ etablissement.adresse }} - {{ etablissement.ville }} - {{ etablissement.codePostal }}</p>
-                                <p class="card-text"><small class="text-body-secondary">{{ etablissement.description }}</small></p>
-
+                                <p class="card-text">{{ etablissement.description }}</p>
                             </div>
                         </div>
                     </div>
@@ -25,14 +24,23 @@
         </div>
     </div>
 
+    <div class="container">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            {% for suite in suites %}
+                <div class="col">
+                    <a href="{{ path('app_suite', {id: suite.id}) }}" class="div-link">
+                        <div class="card h-100 custom-opacity div-link border-0">
+                            <img src="{{ asset('uploads/suite/images/' ~ suite.image) }}" class="img-fluid rounded-start" alt="Image suite">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ suite.titre }}</h5>
+                                <p class="card-text">{{ suite.description }}</p>
+                                <p>{{ suite.prix | format_currency('EUR') }}</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 
-    {{ block('body', 'suite/suites.html.twig') }}
-    <style>
-        ._custom-card {
-            height: 100%;
-        }
-        ._card-img {
-            height: 100%;
-        }
-    </style>
 {% endblock %}

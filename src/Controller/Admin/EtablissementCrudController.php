@@ -28,5 +28,4 @@ class EtablissementCrudController extends AbstractCrudController
             ImageField::new('image')->setBasePath('public/uploads/etablissement/images')->setUploadDir('public/uploads/etablissement/images'),
         ];
     }
-
 }

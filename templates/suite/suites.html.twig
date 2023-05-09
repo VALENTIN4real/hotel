@@ -8,17 +8,16 @@
     <div class="row row-cols-1 row-cols-md-3 g-4">
         {% for suite in suites %}
         <div class="col">
-            <div class="card h-100">
-                <img src="{{ asset('uploads/suite/images/' ~ suite.image) }}" class="img-fluid rounded-start" alt="Image suite">
-                <div class="card-body">
-                    <h5 class="card-title">{{ suite.titre }}</h5>
-                    <p class="card-text">{{ suite.description }}</p>
-                    <p>{{ suite.prix | format_currency('EUR') }}</p>
+            <a href="{{ path('app_suite', {id: suite.id}) }}" class="div-link">
+                <div class="card custom-opacity div-link border-0">
+                    <img src="{{ asset('uploads/suite/images/' ~ suite.image) }}" class="img-fluid rounded-start" alt="Image suite">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ suite.titre }}</h5>
+                        <p class="card-text">{{ suite.description }}</p>
+                        <p>{{ suite.prix | format_currency('EUR') }}</p>
+                    </div>
                 </div>
-                <div class="card-footer">
-                    <a class="d-flex justify-content-end" href="{{ path('app_suite', {id: suite.id}) }}">En savoir plus</a>
-                </div>
-            </div>
+            </a>
         </div>
         {% endfor %}
     </div>
