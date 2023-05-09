@@ -17,7 +17,7 @@ class Suite
     #[ORM\Column(length: 50, nullable: true)]
     private ?string $titre = null;
 
-    #[ORM\Column(length: 100, nullable: true)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $image = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
