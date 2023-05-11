@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ReservationController!{% endblock %}
+
+{% block body %}
+    {{ dump(suites) }}
+    <div {{ vue_component('Test', { etablissements: etablissements, suites: suites }) }}></div>
+
+
+
+    <script>
+
+
+
+    </script>
+{% endblock %}
