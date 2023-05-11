@@ -18,7 +18,6 @@ class EtablissementController extends AbstractController
         $repository = $doctrine->getRepository(Etablissement::class);
 
         $etablissements = $repository->findAll();
-        $etablissements->initialize();
         return $this->render('etablissement/etablissements.html.twig', [
             'etablissements' => $etablissements
         ]);

@@ -3,14 +3,14 @@
 {% block title %}Hello ReservationController!{% endblock %}
 
 {% block body %}
-    {{ dump(suites) }}
-    <div {{ vue_component('Test', { etablissements: etablissements, suites: suites }) }}></div>
+    {% if is_granted('ROLE_USER') %}
+        <div {{ vue_component('ReservationForm') }}></div>
+    {% else %}
+        <div class="container">
+            <div class="card custom-opacity border-0 text-center">
+                <h1>Veuillez vous connecter ou créer un compte pour poursuivre.</h1>
+            </div>
+        </div>
 
-
-
-    <script>
-
-
-
-    </script>
+    {% endif %}
 {% endblock %}
