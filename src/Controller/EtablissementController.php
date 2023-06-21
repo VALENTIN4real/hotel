@@ -60,4 +60,28 @@ class EtablissementController extends AbstractController
             'suites' => $suites
         ]);
     }
+
+    #[Route('/etablissement-axios/{id}', name: 'app_etablissement_axios')]
+    public function getEtablissementByIdAxios(ManagerRegistry $doctrine, int $id): JsonResponse
+    {
+        $repository = $doctrine->getRepository(Etablissement::class);
+        $etablissement = $repository->find($id);
+
+        if (!$etablissement) {
+            return new JsonResponse(['error' => 'Etablissement non trouvé'], Response::HTTP_NOT_FOUND);
+        }
+
+        $data = [
+            'id' => $etablissement->getId(),
+            'nom' => $etablissement->getNom(),
+            'ville' => $etablissement->getVille(),
+            'adresse' => $etablissement->getAdresse(),
+            'code_postal' => $etablissement->getCodePostal(),
+            'description' => $etablissement->getDescription(),
+            'titre' => $etablissement->getTitre(),
+            'image' => $etablissement->getImage()
+        ];
+
+        return new JsonResponse($data);
+    }
 }
